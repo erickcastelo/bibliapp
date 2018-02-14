@@ -1,0 +1,110 @@
+<div class="principal">
+    <h1 class="jumbotron text-center header">List of Authors</h1>
+
+    <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            &nbsp;
+            /
+            &nbsp;
+            <li class="active">
+                List of Authors
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="/author/cadastrar" class="btn btn-primary" type="button">
+                        New Author
+                    </a>
+                </span>
+                    <input class="form-control" placeholder="Filter of Authors" ng-model="filterAuthor">
+                </div>
+            </form>
+        </div> <!-- fim col-md-12 -->
+    </div> <!-- fim row -->
+
+    <br>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <th>
+                    <a href="#" ng-click="orderByField='id'; reverseSort = !reverseSort">
+                        Id
+                        <span ng-show="orderByField == 'id'">
+                        <span ng-show="!reverseSort" class="fa fa-sort-alpha-asc"></span>
+                        <span ng-show="reverseSort" class="fa fa-sort-alpha-desc"></span>
+                </span>
+                    </a>
+                </th>
+                <th>
+                    <a href="#" ng-click="orderByField='firstName'; reverseSort = !reverseSort">
+                        First Namer
+                        <span ng-show="orderByField == 'firstName'">
+                        <span ng-show="!reverseSort" class="fa fa-sort-alpha-asc"></span>
+                        <span ng-show="reverseSort" class="fa fa-sort-alpha-desc"></span>
+                    </span>
+                    </a>
+                </th>
+                <th>
+                    <a href="#" ng-click="orderByField='lastName'; reverseSort = !reverseSort">
+                        Last Name
+                        <span ng-show="orderByField == 'lastName'">
+                        <span ng-show="!reverseSort" class="fa fa-sort-alpha-asc"></span>
+                        <span ng-show="reverseSort" class="fa fa-sort-alpha-desc"></span>
+                    </span>
+                    </a>
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr id="tr{{ author.id }}" ng-repeat="author in paginate.result.data| orderBy:orderByField:reverseSort | filter: filterAuthor">
+                <td>{{ author.id }}</td>
+                <td>{{ author.firstName }}</td>
+                <td>{{ author.lastName }}</td>
+                <td class="text-center td-icons">
+                    <a href="/author/view/{{ author.id }}" title="View" aria-label="View">
+                        <span class="fa fa-eye span-size"></span>
+                    </a>
+                </td>
+                <td class="text-center td-icons">
+                    <a href="/author/editar/{{ author.id }}" title="Edit" aria-label="Edit">
+                        <span class="fa fa-edit span-size"></span>
+                    </a>
+                </td>
+                <td class="text-center td-icons">
+                    <a href="#" title="Remove" aria-label="Remove" ng-click="remove(author)">
+                        <span  class="fa fa-trash-o span-size"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" ng-click="paginate.prev()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item numeration {{auxIndice === $index ? 'active' : ''}}" ng-click="paginate.indice($index)" ng-repeat="i in getNumber(total) track by $index">
+            <a class="page-link" href="#">{{ $index + 1 }}</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" ng-click="paginate.next()" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,61 @@
+<div class="formulario-book">
+
+    <h1 class="jumbotron text-center header">Create Books</h1>
+
+    <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            &nbsp;
+            /
+            &nbsp;
+            <li>
+                <a href="/book/index">List of Books</a>
+            </li>
+            &nbsp;
+            /
+            &nbsp;
+            <li class="active">
+                Create Books
+            </li>
+        </ul>
+    </div>
+
+    <div class="form col-lg-6">
+        <form novalidate name="form" ng-submit="toSubmit()">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text"
+                       class="form-control"
+                       id="title"
+                       name="title"
+                       ng-model="book.title"
+                       autocomplete="off"
+                       required
+                >
+                <span ng-show="form.$submitted && form.title.$error.required"
+                      class="help-block">
+                "Title" can't be blank
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="authors">Authors:</label>
+                <select class="form-control" name="authorId" ng-model="book.authorId" id="authors" required
+                        ng-options="author.id as (author.firstName + ' ' + author.lastName) for author in authors">
+                    <option></option>
+                </select>
+                <span ng-show="form.$submitted && form.authorId.$error.required"
+                      class="help-block">
+                "Authors" can't be blank
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Salve
+            </button>
+            <a href="book/index/" class="btn btn-primary">Back</a>
+        </form>
+    </div>
+</div>

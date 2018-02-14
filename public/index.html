@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="bibliapp">
+	<head>
+		<base href="/">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title> Avaliacação INDT </title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/mdb.min.css">
+        <link rel="stylesheet" href="css/sweet-alert.min.css">
+		<!-- build:css -->
+		<!-- endbuild -->
+
+	</head>
+	<body>
+		<div class="container">
+			<ng-view></ng-view>
+		</div>
+
+		<!-- build:js -->
+		<script src="js/lib/angular.min.js"></script>
+		<script src="js/lib/angular-route.min.js"></script>
+		<script src="js/lib/angular-animate.js"></script>
+		<script src="js/lib/angular-toastr.tpls.js"></script>
+		<script src="js/lib/sweet-alert.min.js"></script>
+		<script src="js/lib/SweetAlert.js"></script>
+
+		<script src="js/main.js"></script>
+		<script src="js/controllers/authors-controller.js"></script>
+		<script src="js/controllers/author-controller.js"></script>
+		<script src="js/controllers/books-controller.js"></script>
+		<script src="js/controllers/book-controller.js"></script>
+		<script src="js/controllers/view-controller.js"></script>
+		<script src="js/services/AuthorService.js"></script>
+		<script src="js/services/PaginationService.js"></script>
+		<script src="js/services/BookService.js"></script>
+		<!-- endbuild -->
+
+	</body>
+</html>
